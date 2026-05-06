@@ -1,0 +1,8 @@
+.cache
+.claude
+.vscode
+.xmake
+build
+install
+__pycache__
+*.so
