@@ -1,6 +1,6 @@
 target("_C")
     add_rules("python.module")
-    add_rules("cuda.auto")
     set_targetdir(path.join(os.projectdir(), "extension_cpp"))
-    add_files("csrc/muladd.cpp", "csrc/cuda/muladd.cu")
+    add_files("csrc/muladd.cpp")
+    add_cuda_files("csrc/cuda/muladd.cu")
     add_packages("pytorch", "openmp")

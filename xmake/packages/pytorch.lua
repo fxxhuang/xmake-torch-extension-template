@@ -15,12 +15,13 @@ package("pytorch")
                 "'linkdir':os.path.join(d,'lib')}))"
             })
         end }
-        if not outdata then return nil end
+        if not outdata then
+            raise("PyTorch not found in current Python environment: %s", program)
+        end
 
         local info = json.decode(outdata)
         if not info or not os.isdir(info.includedir) then return nil end
 
-        -- collect shared libraries (platform-aware)
         local libfiles = {}
         if package:is_plat("macosx") then
             libfiles = os.files(path.join(info.linkdir, "*.dylib"))

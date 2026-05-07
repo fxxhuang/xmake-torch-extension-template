@@ -31,5 +31,8 @@ rule("python.module")
         end
 
         target:add("includedirs", info.include)
+        if target:is_plat("macosx") then
+            target:add("shflags", "-Wl,-undefined,dynamic_lookup")
+        end
     end)
 rule_end()
